@@ -28,7 +28,7 @@ import Contacto from '../components/Contacto.vue';
         <div class="flex gap-20 mx-12 md:mx-24 lg:mx-40 w-fit">
             <div class="w-full md:flex flex-col gap-5 hidden">
                 <p class="text-2xl font-semibold text-center dark:text-neutral-300">Conóceme</p>
-                <p class="text-justify mb-4 dark:text-neutral-300">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce fermentum elit erat, aliquam vestibulum turpis efficitur quis. Mauris nisi velit, consequat et tincidunt ut, consectetur sed orci. Cras id ultrices urna. Mauris a tellus a enim faucibus posuere. Nam accumsan porta massa ut facilisis. Donec faucibus iaculis suscipit. Duis mattis leo non dapibus ultricies.</p>
+                <p class="text-justify mb-4 dark:text-neutral-300">Con 22 años, soy un profesional joven con una licenciatura en comercio Internacional y actualmente estoy inmerso en mis estudios para obtener un Técnico Superior Universitario en Análisis de Sistemas. Mi destreza se centra en el desarrollo de software, con habilidades destacadas en Python y Javascript. Soy una persona responsable y entusiasta.</p>
             </div>
             <div class="w-full flex flex-col gap-5">
                 <p class="text-2xl font-semibold text-center dark:text-neutral-300">Habilidades</p>

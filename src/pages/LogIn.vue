@@ -15,7 +15,15 @@ const formData = reactive({
     password: ''
 })
 
-const { logIn } = useAuth();
+const { logIn, checkAuth } = useAuth();
+
+const redirectDashboard = async () => {
+    if (await checkAuth()) {
+        await router.push('/dashboard');
+    }
+}
+
+redirectDashboard();
 
 const handleSubmit = async e => {
     e.preventDefault();

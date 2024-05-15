@@ -29,8 +29,16 @@ import Contacto from '../components/Contacto.vue';
             <div class="w-full md:flex flex-col gap-5 hidden">
                 <p class="text-2xl font-semibold text-center dark:text-neutral-300">Conóceme</p>
                 <p class="text-justify mb-4 dark:text-neutral-300">Con 22 años, soy un profesional joven con una licenciatura en comercio Internacional y actualmente estoy inmerso en mis estudios para obtener un Técnico Superior Universitario en Análisis de Sistemas. Mi destreza se centra en el desarrollo de software, con habilidades destacadas en Python y Javascript. Soy una persona responsable y entusiasta.</p>
+                <div class="flex gap-5 justify-center w-full">
+                    <a href="/JesusMendezCV_ES.pdf" class="btn-green text-xs lg:text-sm text-center" target="_blank">CV en Español</a>
+                    <a href="/JesusMendezCV_EN.pdf" class="btn-green text-xs lg:text-sm text-center" target="_blank">CV en Inglés</a>
+                </div>
             </div>
             <div class="w-full flex flex-col gap-5">
+                <div class="md:hidden flex gap-5 justify-center mb-3 w-full">
+                    <a href="/JesusMendezCV_ES.pdf" class="btn-green text-xs font-semibold" target="_blank">CV en Español</a>
+                    <a href="/JesusMendezCV_EN.pdf" class="btn-green text-xs font-semibold" target="_blank">CV en Inglés</a>
+                </div>
                 <p class="text-2xl font-semibold text-center dark:text-neutral-300">Habilidades</p>
                 <div class="flex flex-wrap gap-5 mb-5 justify-center lg:justify-normal w-full">
                     <Habilidades :all="true" />

@@ -1,6 +1,6 @@
 <script setup>
-import Idiomas from '../components/Idiomas.vue';
-import IdiomasForm from '../components/dashboard/IdiomasForm.vue';
+import Idiomas from '../../components/Idiomas.vue';
+import IdiomasForm from '../../components/dashboard/IdiomasForm.vue';
 
 </script>
 

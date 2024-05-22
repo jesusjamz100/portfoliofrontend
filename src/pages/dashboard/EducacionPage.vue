@@ -1,7 +1,7 @@
 <script setup>
-import Educacion from '../components/Educacion.vue';
-import EducacionForm from '../components/dashboard/EducacionForm.vue';
-import useEducacion from '../composables/useEducacion.js';
+import Educacion from '../../components/Educacion.vue';
+import EducacionForm from '../../components/dashboard/EducacionForm.vue';
+import useEducacion from '../../composables/useEducacion.js';
 import { provide } from 'vue';
 
 const { educacionArray, educacion } = useEducacion();

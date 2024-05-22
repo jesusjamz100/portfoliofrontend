@@ -1,6 +1,6 @@
 <script setup>
-import Proyectos from '../components/Proyectos.vue';
-import ProyectosForm from '../components/dashboard/ProyectosForm.vue';
+import Proyectos from '../../components/Proyectos.vue';
+import ProyectosForm from '../../components/dashboard/ProyectosForm.vue';
 </script>
 
 <template>

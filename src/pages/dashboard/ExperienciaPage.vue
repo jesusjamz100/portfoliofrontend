@@ -1,9 +1,9 @@
 <script setup>
-import useExperiencia from '../composables/useExperiencia.js';
+import useExperiencia from '../../composables/useExperiencia.js';
 import { provide } from 'vue';
 
-import Experiencia from '../components/Experiencia.vue';
-import ExperienciaForm from '../components/dashboard/ExperienciaForm.vue';
+import Experiencia from '../../components/Experiencia.vue';
+import ExperienciaForm from '../../components/dashboard/ExperienciaForm.vue';
 
 const { experiencia, experiencias } = useExperiencia();
 

@@ -1,6 +1,6 @@
 <script setup>
-import Habilidades from '../components/Habilidades.vue';
-import HabilidadesForm from '../components/dashboard/HabilidadesForm.vue';
+import Habilidades from '../../components/Habilidades.vue';
+import HabilidadesForm from '../../components/dashboard/HabilidadesForm.vue';
 
 </script>
 

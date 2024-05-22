@@ -9,11 +9,12 @@ import Inicio from './pages/Inicio.vue'
 import Docs from './pages/Docs.vue';
 import LogIn from './pages/LogIn.vue';
 import Dashboard from './pages/Dashboard.vue';
-import EducacionPage from './pages/EducacionPage.vue';
-import ExperienciaPage from './pages/ExperienciaPage.vue';
-import HabilidadesPage from './pages/HabilidadesPage.vue';
-import IdiomasPage from './pages/IdiomasPage.vue';
-import ProyectosPage from './pages/ProyectosPage.vue';
+import EducacionPage from './pages/dashboard/EducacionPage.vue';
+import ExperienciaPage from './pages/dashboard/ExperienciaPage.vue';
+import HabilidadesPage from './pages/dashboard/HabilidadesPage.vue';
+import IdiomasPage from './pages/dashboard/IdiomasPage.vue';
+import ProyectosPage from './pages/dashboard/ProyectosPage.vue';
+import ProyectoDetail from './pages/ProyectoDetail.vue';
 
 import useAuth from './composables/useAuth.js';
 import axios from 'axios';
@@ -62,6 +63,10 @@ export const router = createRouter({
                     component: ProyectosPage
                 }
             ]
+        },
+        {
+            path: '/projects/:id',
+            component: ProyectoDetail
         }
     ],
     scrollBehavior (to, from, savedPosition) {

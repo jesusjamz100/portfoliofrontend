@@ -19,8 +19,8 @@ const handleClick = () => {
     todos.value = !todos.value;
 };
 
-const handleEliminar = id => {
-    eliminarProyecto(id);
+const handleEliminar = async id => {
+    await eliminarProyecto(id);
     alerta.value = { msg: 'Proyecto eliminado correctamente' };
     setTimeout( () => alerta.value = {});
 };
@@ -32,11 +32,14 @@ const handleEliminar = id => {
     <Spinner v-if="proyectosArray.length === 0" />
     <div v-for="i in proyectosArray.slice(0, todos ? proyectosArray.length : 3)" class="flex flex-col lg:flex-row gap-10 items-center w-full" :class="dashboard ? 'bg-white p-5 rounded-lg shadow-lg dark:bg-neutral-800' : ''">
         <div v-if="!dashboard" class="max-w-fit">
-            <img src="/sampleImage2.avif" :alt="`project-${i.id}`" class="project-img border-[1px] border-gray-300 rounded-lg">
+            <img :src="`${!i.imgUrl ? '/noimage.avif' : i.imgUrl}`" :alt="`project-${i.id}`" class="project-img border-[1px] border-gray-300 rounded-lg">
         </div>
         <div :class="`${dashboard ? 'gap-3' : 'gap-5'} flex w-full`">
             <div :class="`${dashboard ? 'gap-3' : 'gap-5 text-center lg:text-left'} flex flex-col w-full`">
-                <p class="font-semibold dark:text-neutral-300" :class="dashboard ? 'text-base' : 'text-xl'">{{ i.titulo }}</p>
+                <p class="font-semibold dark:text-neutral-300" :class="dashboard ? 'text-base' : 'text-xl'">{{ i.titulo }}
+                    <br class="inline lg:hidden"/>
+                    <router-link v-if="!dashboard" class="text-gray-500 text-sm hover:cursor-pointer" :to="`projects/${i.id}`" > Ver detalles</router-link>
+                </p>
                 <p class="dark:text-neutral-300" :class="dashboard ? 'text-base' : 'text-lg'">{{ i.descripcion }}</p>
                 <div v-if="i.tecnologias.length >= 1" class="flex flex-wrap gap-5 w-full h-fit" :class="!dashboard ? 'justify-center lg:justify-normal' : ''">
                     <p v-for="tecnologia in i.tecnologias" :class="`${dashboard ? 'text-xs' : ''} habilidad`">{{ tecnologia }}</p>

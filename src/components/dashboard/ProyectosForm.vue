@@ -1,7 +1,11 @@
 <script setup>
 import { ref, inject, watch } from 'vue';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faImage } from '@fortawesome/free-solid-svg-icons';
 import useProyectos from '../../composables/useProyectos.js'
 import Alerta from '../Alerta.vue';
+
+library.add(faImage)
 
 const { guardarProyecto } = useProyectos();
 
@@ -24,6 +28,9 @@ const githubLinkFront = ref('');
 const githubLinkBack = ref('');
 const deployLinkFront = ref('');
 const deployLinkBack = ref('');
+
+const selectedFile = ref(null);
+const imageUrl = ref('');
 
 watch([proyecto], () => {
     if (proyecto.value?.id) {
@@ -70,6 +77,12 @@ const handleReset = () => {
     deployLinkBack.value = '';
     github.value = false;
     deploy.value = false;
+    selectedFile.value = null;
+}
+
+const handleFileChange = e => {
+    selectedFile.value = e.target.files[0];
+    imageUrl.value = URL.createObjectURL(selectedFile.value);
 }
 
 const handleSubmit = e => {
@@ -78,6 +91,7 @@ const handleSubmit = e => {
     if ([titulo.value, descripcion.value, tecnologias.value, startDate.value].includes('')) {
         alerta.value = { msg: 'Todos los campos son obligatorios', error: true };
         setTimeout( () => alerta.value = {}, 3000);
+        return;
     }
 
     githubLinks.value = githubLinkFront.value && githubLinkBack.value ? [githubLinkFront.value, githubLinkBack.value]
@@ -101,12 +115,17 @@ const handleSubmit = e => {
         deployLinks: deployLinks.value
     }
 
+    const formData = new FormData();
+    formData.append('proyecto', JSON.stringify(nuevoProyecto))
+    formData.append('image', selectedFile.value)
+
     try {
-        guardarProyecto(nuevoProyecto);
+        guardarProyecto(formData);
         alerta.value = { msg: 'Proyecto guardado correctamente' };
         setTimeout( () => alerta.value = {}, 3000);
     } catch (error) {
-        console.log(error);
+        alerta.value = { msg: 'Hubo un error en la petición', error: true };
+        setTimeout( () => alerta.value = {}, 3000);
         return;
     }
 
@@ -166,6 +185,17 @@ const handleSubmit = e => {
         <select class="form-input-white" name="tecnologias" id="tecnologias" multiple v-model="tecnologias">
             <option v-for="i in habilidades" :value="i.habilidad">{{ i.habilidad }}</option>
         </select>
+        <div class="w-full">
+            <div class="flex flex-col gap-3">
+                <label for="thumbnail" class="form-label text-base hover:cursor-pointer">
+                    <font-awesome-icon :icon="['fas', 'image']" />
+                    Thumbnail
+                </label>
+                <input type="file" name="thumbnail" id="thumbnail" class="hidden" @change="handleFileChange" />
+                <p v-if="selectedFile">{{ selectedFile.name }}</p>
+                <img v-if="selectedFile" :src="imageUrl" alt="" class="max-w-full max-h-[350px] h-auto">
+            </div>
+        </div>
         <div class="flex gap-3 mt-2">
             <input type="submit" class="btn-green cursor-pointer w-40" :value="id ? 'Editar' : 'Agregar'">
             <input type="button" class="btn-blue cursor-pointer w-40" value="Resetear" @click="handleReset" >

@@ -117,7 +117,9 @@ const handleSubmit = e => {
 
     const formData = new FormData();
     formData.append('proyecto', JSON.stringify(nuevoProyecto))
-    formData.append('image', selectedFile.value)
+    if (selectedFile.value) {
+        formData.append('image', selectedFile.value)
+    }
 
     try {
         guardarProyecto(formData);

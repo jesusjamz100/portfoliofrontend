@@ -53,10 +53,13 @@ const useProyectos = () => {
                 "Authorization": `Bearer ${token[2]}`
             }
         }
+
+        const proyectoData = JSON.parse(proyecto.get('proyecto'));
+        const proyectoId = proyectoData.id;
         
-        if (proyecto.id) {
+        if (proyectoId) {
             try {
-                const { data } = await clienteAxios.put(`/proyectos/${proyecto.id}`, proyecto, config);
+                const { data } = await clienteAxios.put(`/proyectos/${proyectoId}`, proyecto, config);
                 const proyectosActualizados = proyectosArray.value.map( proyectoState => proyectoState.id === data.id ? data : proyectoState);
                 proyectosArray.value = proyectosActualizados;
             } catch (error) {
